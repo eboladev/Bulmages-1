@@ -265,43 +265,7 @@ void BfSubForm::editFinished ( int row, int col, BlDbSubFormRecord *rec, BlDbSub
             } // end if
         } else {
             blMsgWarning ( _ ( "El codigo del articulo no existe.\nATENCION: No se guadara bien el documento hasta que sea valido." ) );
-            /// \TODO Preparo para revisarlo para la version 0.11.2 o posterior.
-            /** El codigo introducido no existe en la base de datos.
-            Aqui se tiene que dar la siguiente informacion:
-            - "El uso de codigos de articulos inexistentes esta prohibido. Corrija
-            esta situacion para poder guardar el documento."
-            Se tiene que informar de las siguientes opciones:
-            - Crear articulo con ese codigo.
-            - Mostrar el listado de articulos para seleccionar uno valido.
-            - Editar codigo para corregirlo.
-            **/
-            /*
-            QMessageBox msgBox(this);
-            msgBox.setIcon(QMessageBox::Question);
-            msgBox.setWindowTitle(_("Articulo inexistente"));
-            msgBox.setText(_("El uso de codigos de articulos inexistentes esta prohibido.\nCorrija esta situacion para poder guardar el documento."));
-            QPushButton *botonCrear = msgBox.addButton(_("&Crear articulo"), QMessageBox::ActionRole);
-            QPushButton *botonSeleccionar = msgBox.addButton(_("&Seleccionar articulo"), QMessageBox::ActionRole);
-            QPushButton *botonEditar = msgBox.addButton(_("&Editar codigo"), QMessageBox::ActionRole);
-            msgBox.setDefaultButton(botonCrear);
-            msgBox.setEscapeButton(botonEditar);
-
-            msgBox.exec();
-
-            if (msgBox.clickedButton() == botonCrear) {
-             blMsgInfo("Crear", this);
-
-            } else if (msgBox.clickedButton() == botonSeleccionar) {
-             blMsgInfo("Seleccionar", this);
-
-            } else if (msgBox.clickedButton() == botonEditar) {
-
-
-            }
-            */
-
             delete cur;
-            
             return;
         } // end if
 

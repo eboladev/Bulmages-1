@@ -37,6 +37,7 @@ add_subdirectory(pluginbf_promedios)
 add_subdirectory(pluginbf_multiimprimir)
 add_subdirectory(pluginbf_q19)
 add_subdirectory(pluginbf_correo)
+add_subdirectory(pluginbf_sepa20022)
 
 
 add_subdirectory(pluginbf_tipotrabajo)

@@ -1,0 +1,496 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: info@iglues.org\n"
+"POT-Creation-Date: 2011-08-16 13:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  bulmalib.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformsxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclipboardbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpers.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpersmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimportcsv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbloqueos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginsubformprint.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginarchivos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindocked.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmacont.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginregistroiva.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrector.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbc_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalancetree.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincanualesods.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalance.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresumcta.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginproyectos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbalanceold.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmafact.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_example.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintarifas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_comercial.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_cliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbf_proveedor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintrazabilidad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbarcodeopen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincatalogo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientes.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininventario.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincontratos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticket.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugin_tc_articulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpromedios.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginimpresionesmultiples.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginq19.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmail.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginmailthunderbird.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalmacen.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintipostrabajo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincuadrante.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginasterisk.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindebugbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpreciocoste.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginresarticulos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalias.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugininformeclientessxc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetado.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginetiquetas.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincompraventa.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginclientprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginopenref.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincorrectorbf.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpagos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobros.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpresupuesto.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedido.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaran.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfactura.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginfacturaprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalbaranprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginpedidoprov.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginz2z.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginprofesor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginalumno.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintutor.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginactividad.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmatpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketbasico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintecladonumerico.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotal.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintotalivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginadmin.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincobrar.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginartsubform.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintpvivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugintcaliastpv.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketdesglose.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscaarticulo.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginbuscacliente.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambio.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugincambioivainc.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  plugindevolucion2.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginticketsdevueltos.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  pluginabrevs.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"#-#-#-#-#  bulmages_suite.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+
+#: q19writer.cpp:150 q19writer.cpp:229
+#, qt-format
+msgid ""
+"\n"
+"%3 : %1 recibos, %2 EUR. "
+msgstr ""
+"\n"
+"%3 : %1 recibos, %2 EUR. "
+
+#: q19writer.cpp:313
+#, qt-format
+msgid "%1 (%2) supera la longitud maxima (%3 caracteres)"
+msgstr "%1 (%2) supera la longitud máxima (%3 caracteres)"
+
+#: q19writer.cpp:244
+#, qt-format
+msgid ""
+"%2\n"
+".El fichero de remesa bancaria generado no es aprovechable. Ha fallado la "
+"generacion en el recibo con referencia %1"
+msgstr ""
+"%2\n"
+".El fichero de remesa bancaria generado no es aprovechable. Ha fallado la "
+"generación en el recibo con referencia %1"
+
+#: q19view.cpp:90 q19writer.cpp:73
+msgid "*.q19;;*"
+msgstr "*.q19;;*"
+
+#: ui_q19base.h:274
+msgid "+"
+msgstr "+"
+
+#: ui_q19base.h:308
+msgid "..."
+msgstr "..."
+
+#: ui_q19base.h:284
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Patron del texto que "
+"recibiran los clientes de su banco como concepto. El concepto sera el texto "
+"introducido aqui sustituyendo los siguientes parametros por su valor para "
+"cada factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%serie</span> - Serie de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%num</span> - Numero de facturra</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%id</span> - identificador interno de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fechafac[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de factura en algun formato aceptado por postgresql</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fecharec[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de cargo del recibo en algun formato aceptado por postgresql (puede "
+"coincidir o no con la fecha de la factura, segun lo que indique en Fecha de "
+"Cargo)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%desc</span> - Texto de descripcion de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%ref</span> - referencia de la factura.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%base</span> - base imponible</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%imp</span> - impuestos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%total</span> - total con impuestos incluidos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%coment</span> - comentario de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%contact</span> - persona de contacto</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">Patrón del texto que "
+"recibirán los clientes de su banco como concepto. El concepto será el texto "
+"introducido aquí sustituyendo los siguientes parámetros por su valor para "
+"cada factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%serie</span> - Serie de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%num</span> - Número de facturra</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%id</span> - identificador interno de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fechafac[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de factura en algún formato aceptado por postgresql</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%fecharec[</span><span style=\" font-weight:600; font-style:"
+"italic;\">dd.MM.yyyy</span><span style=\" font-weight:600;\">]</span> - "
+"fecha de cargo del recibo en algún formato aceptado por postgresql (puede "
+"coincidir o no con la fecha de la factura, segun lo que indique en Fecha de "
+"Cargo)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%desc</span> - Texto de descripción de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%ref</span> - referencia de la factura.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%base</span> - base imponible</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%imp</span> - impuestos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%total</span> - total con impuestos incluidos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%coment</span> - comentario de la factura</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">%contact</span> - persona de contacto</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></"
+"p></body></html>"
+
+#: ui_q19base.h:309
+msgid "Aceptar"
+msgstr "Aceptar"
+
+#: ui_q19base.h:280
+msgid "Anos"
+msgstr "Años"
+
+#: ui_q19base.h:307
+msgid "Archivo"
+msgstr "Archivo"
+
+#: ui_q19base.h:270
+msgid "Banco"
+msgstr "Banco"
+
+#: q19writer.cpp:457
+#, qt-format
+msgid ""
+"Banco de Cliente '%1'  (para mi '%2') invalido en el recibo con id %3 (ref. "
+"%4), para cliente %5 (%6)"
+msgstr ""
+"Banco de Cliente '%1'  (para mi '%2') inválido en el recibo con id %3 (ref. "
+"%4), para cliente %5 (%6)"
+
+#: ui_q19base.h:310
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: ui_q19base.h:282
+msgid "Concepto"
+msgstr "Concepto"
+
+#: q19writer.cpp:312
+msgid "Datos de recibos incorrectos"
+msgstr "Datos de recibos incorrectos"
+
+#: q19writer.cpp:435 q19writer.cpp:439 q19writer.cpp:456
+msgid "Datos incorrectos"
+msgstr "Datos incorrectos"
+
+#: ui_q19base.h:277
+msgid "Dias"
+msgstr "Días"
+
+#: q19writer.cpp:390 q19writer.cpp:478
+msgid "El CIF del ordenante"
+msgstr "El CIF del ordenante"
+
+#: q19writer.cpp:346 q19writer.cpp:607
+msgid "El CIF del presentador (propiedades de Empresa)"
+msgstr "El CIF del presentador (propiedades de Empresa)"
+
+#: q19view.cpp:66
+msgid "Error al crear el archivo"
+msgstr "Error al crear el archivo"
+
+#: q19view.cpp:192 q19view.cpp:193
+msgid "Error al generar remesa bancaria."
+msgstr ""
+
+#: q19writer.cpp:237
+#, qt-format
+msgid ""
+"Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
+"falta de banco"
+msgstr ""
+"Excluidos %3 de %2 recibos por falta de fecha de vencimiento y otros %1 por "
+"falta de banco"
+
+#: ui_q19base.h:306
+#, c-format
+msgid "FRA %serie%num %desc "
+msgstr "FRA %serie%num %desc "
+
+#: q19writer.cpp:263
+msgid "Falta NIF de su empresa"
+msgstr "Falta NIF de su empresa"
+
+#: q19view.cpp:132
+msgid "Falta el  banco"
+msgstr "Falta el  banco"
+
+#: q19writer.cpp:286
+msgid "Falta el nombre de su empresa"
+msgstr "Falta el nombre de su empresa"
+
+#: ui_q19base.h:271
+msgid "Fecha de Cargo"
+msgstr "Fecha de Cargo"
+
+#: ui_q19base.h:273
+msgid "Fecha de factura"
+msgstr "Fecha de factura"
+
+#: q19writer.cpp:71
+msgid "Fichero de remesa bancaria (Cuaderno 19)"
+msgstr "Fichero de remesa bancaria (Cuaderno 19)"
+
+#: q19view.cpp:88
+msgid "Fichero q19 a generar para el banco "
+msgstr "Fichero q19 a generar para el banco "
+
+#: q19writer.cpp:239
+msgid "Fichero(s) generado(s)"
+msgstr "Fichero(s) generado(s)"
+
+#: ui_q19base.h:269
+msgid "Generacion Q19"
+msgstr "Generacion Q19"
+
+#: q19qtoolbutton1.cpp:72 q19qtoolbutton.cpp:82
+msgid "Generar Q19"
+msgstr ""
+
+#: q19qtoolbutton1.cpp:73 q19qtoolbutton.cpp:83
+msgid "Generar archivo Q19 de los elementos seleccionados."
+msgstr ""
+
+#: q19writer.cpp:439
+#, qt-format
+msgid ""
+"Importe excesivo (%1) !. El limite son %2 digitos, incluyendo los 2 "
+"decimales "
+msgstr ""
+
+#: q19writer.cpp:435
+#, qt-format
+msgid "Importe negativo (%1) ! "
+msgstr ""
+
+#: q19writer.cpp:405
+msgid "Los digitos de control de su cuenta bancaria"
+msgstr ""
+
+#: ui_q19base.h:279
+msgid "Meses"
+msgstr "Meses"
+
+#: q19view.cpp:116
+msgid ""
+"No hay facturas seleccionadas. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+msgstr ""
+"No hay facturas seleccionadas. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+
+#: q19qtoolbutton.cpp:122
+msgid ""
+"No hay recibos seleccionados. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+msgstr ""
+"No hay recibos seleccionados. Puede utilizar la columna selector para "
+"seleccionar los recibos a incluir en la remesa bancaria."
+
+#: q19writer.cpp:264
+msgid ""
+"No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
+"Propiedades de Empresa"
+msgstr ""
+"No podemos generar remesas bancarias hasta que entre el NIF de su empresa en "
+"Propiedades de Empresa"
+
+#: q19writer.cpp:76
+#, qt-format
+msgid "Nombre del fichero: '%1'"
+msgstr ""
+
+#: q19view.cpp:133
+msgid "Por favor, escoja un banco donde cobrar los recibos a generar."
+msgstr "Por favor, escoja un banco donde cobrar los recibos a generar."
+
+#: q19writer.cpp:244
+msgid "Remesa mal generada"
+msgstr "Remesa mal generada"
+
+#: q19writer.cpp:236
+msgid "Remesa parcialmente generada"
+msgstr "Remesa parcialmente generada"
+
+#: q19view.cpp:116 q19qtoolbutton.cpp:122
+msgid "Remesa vacia"
+msgstr "Remesa vacía"
+
+#: ui_q19base.h:278
+msgid "Semanas"
+msgstr "Semanas"
+
+#: q19writer.cpp:357 q19writer.cpp:400
+msgid "Su entidad bancaria"
+msgstr "Su entidad bancaria"
+
+#: q19writer.cpp:408
+msgid "Su numero de cuenta bancaria"
+msgstr ""
+
+#: q19writer.cpp:359 q19writer.cpp:402
+msgid "Su oficina bancaria"
+msgstr "Su oficina bancaria"
+
+#: q19writer.cpp:239
+#, qt-format
+msgid ""
+"Tiene los siguientes ficheros de recibos para los bancos:\n"
+"%1"
+msgstr ""
+"Tiene los siguientes ficheros de recibos para los bancos:\n"
+"%1"
+
+#: ui_q19base.h:272
+msgid "dd/MM/yyyy"
+msgstr "dd/MM/yyyy"
+
+#~ msgid "*.q19"
+#~ msgstr "*.q19"
+
+#~ msgid "Num. Operaciones"
+#~ msgstr "Num. Operaciones"
+
+#~ msgid "Save file"
+#~ msgstr "Save file"
+
+#~ msgid "Total"
+#~ msgstr "Total"
